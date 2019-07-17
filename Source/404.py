@@ -295,7 +295,7 @@ def run(url, allow_redirects, internal, external, newline, print_all, quiet, thr
     st_total_external = 0
     st_error_task = 0
     st_error_link = 0
-    st_start_time = time.clock()
+    st_start_time = time.process_time()
 
     # start checking links:
     for task in pool.poll_completed_tasks():
@@ -356,7 +356,7 @@ def run(url, allow_redirects, internal, external, newline, print_all, quiet, thr
                     st_total_links += 1
 
     if not quiet:
-        st_end_time = time.clock() - st_start_time
+        st_end_time = time.process_time() - st_start_time
 
         print('Checked {} total links in {:.3} seconds.'.format(st_total_links, st_end_time), file = sys.stderr)
         print('{} internal, {} external.'.format(st_total_internal, st_total_external), file = sys.stderr)
